@@ -1,0 +1,36 @@
+Configuration:
+  status: warn
+  name: Gzync
+  properties:
+    property:
+      name: filename
+      value: logs/gsync-log.log
+  thresholdFilter:
+    level: debug
+
+  appenders:
+    Console:
+      name: STDOUT
+      PatternLayout:
+        Pattern: "[%t] [%C{1}.%M]:  %m %ex%n"
+    File:
+      name: File
+      fileName: ${filename}
+      PatternLayout:
+        Pattern: "[%d %p] %C{1.} [%t] %m%n"
+      Filters:
+        ThresholdFilter:
+          level: info
+
+  Loggers:
+    logger:
+    -
+      name: org.mlz.sync.gzync
+      level: info
+      additivity: true
+      AppenderRef:
+        ref: File
+    Root:
+      level: error
+      AppenderRef:
+        ref: STDOUT

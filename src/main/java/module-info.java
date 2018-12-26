@@ -6,6 +6,8 @@ module org.mlz.sync.gzync {
     requires com.google.api.client;
     requires google.oauth.client.java6;
     requires google.oauth.client.jetty;
+    requires org.apache.logging.log4j;
+    requires java.sql;
 
     exports org.mlz.sync.gzync;
 
