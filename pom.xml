@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.mlz.gzync</groupId>
+    <groupId>org.mlz.sync</groupId>
     <artifactId>gzync</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -19,7 +19,46 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-drive -->
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-drive</artifactId>
+            <version>v3-rev136-1.25.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client-assembly -->
+        <!--<dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client-assembly</artifactId>
+            <version>1.27.0</version>
+            <type>pom</type>
+        </dependency>-->
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>1.27.0</version>
+            <type>pom</type>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client-java6 -->
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client-java6</artifactId>
+            <version>1.27.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.oauth-client/google-oauth-client-jetty -->
+        <dependency>
+            <groupId>com.google.oauth-client</groupId>
+            <artifactId>google-oauth-client-jetty</artifactId>
+            <version>1.27.0</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client-jackson2</artifactId>
+            <version>1.27.0</version>
+        </dependency>
     </dependencies>
+
 
 
     <build>
@@ -29,7 +68,7 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.8.0</version>
             <configuration>
-                <release>11</release>
+                <release>10</release>
             </configuration>
         </plugin>
         <plugin>
