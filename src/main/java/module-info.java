@@ -8,6 +8,7 @@ module org.mlz.sync.gzync {
     requires google.oauth.client.jetty;
     requires org.apache.logging.log4j;
     requires java.sql;
+    requires info.picocli;
 
     exports org.mlz.sync.gzync;
 

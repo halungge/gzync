@@ -15,6 +15,8 @@ import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.mlz.sync.gzync.local.parser.ArgParser;
+import org.mlz.sync.gzync.local.parser.UnknownCliArgumentException;
 import org.mlz.sync.gzync.remote.RemoteDriveService;
 
 import java.io.IOException;
@@ -74,15 +76,29 @@ public class GZyncer {
     public static void main(String... args) throws IOException, GeneralSecurityException {
 
         try {
+            //read arguments
+            var argParser = new ArgParser();
+            argParser.parse(args);
+        }
+        catch(UnknownCliArgumentException exception){
+            // TODO print suggestions to stdout
+            LOG.error("wrong arguments: ", exception.getMessage());
+        }
+
+        try {
+
             httpTransport = GoogleNetHttpTransport.newTrustedTransport();
             dataStoreFactory = new FileDataStoreFactory(DATA_STORE_DIR);
             LOG.debug("datastore setup");
             // authorization
             Credential credential = authorize();
+
             LOG.info("authorized");
             // set up the global Drive instance
             var remoteDriveService = new RemoteDriveService();
             remoteDriveService.getChangesOnRootFolder();
+
+
             drive = new Drive.Builder(httpTransport, JSON_FACTORY, credential).setApplicationName(
                     APPLICATION_NAME).build();
             final Drive.Changes changes = drive.changes();
