@@ -4,3 +4,4 @@ target
 logs/*.txt
 logs/*json
 logs/*.log
+local_gdrive
