@@ -34,4 +34,12 @@ public class ArgParser {
     public String getLocalFolder() {
         return args.localFolder;
     }
+
+    public boolean isForcedDownload() {
+        return args.forcedDownload;
+    }
+
+    public String getRemoteBaseFolder() {
+        return args.remoteFolder;
+    }
 }

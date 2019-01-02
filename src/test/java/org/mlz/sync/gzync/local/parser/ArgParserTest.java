@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ArgParserTest {
     private ArgParser parser;
@@ -29,6 +31,25 @@ class ArgParserTest {
     void parseLocalPath_long(){
         parser.parse("--localPath", "foo/baz");
         assertThat(parser.getLocalFolder(), equalTo("foo/baz"));
+    }
+
+    @Test
+    void defaultValueOfForceIsFalse(){
+        parser.parse("--localPath", "foo/baz");
+        assertFalse(parser.isForcedDownload());
+    }
+
+    @Test
+    void parseForceDownload_short(){
+        parser.parse("-f");
+        assertTrue(parser.isForcedDownload());
+    }
+
+
+    @Test
+    void parseForceDownload_long(){
+        parser.parse("--force-new");
+        assertTrue(parser.isForcedDownload());
     }
     @Test
     void parseNull_returnsDefault(){

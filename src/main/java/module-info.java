@@ -10,6 +10,8 @@ module org.mlz.sync.gzync {
     requires java.sql;
     requires info.picocli;
 
+    opens org.mlz.sync.gzync.local.parser;
+
     exports org.mlz.sync.gzync;
 
 }
